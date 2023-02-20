@@ -4,24 +4,34 @@
 	<meta charset="utf-8">
 	<script>
 		function setSearchEngine(){
-			selectedEngine = document.querySelector("input[name=engine]:checked").value;
+			// console.log("test")
+			let engine = document.querySelector("input[name=engine]:checked");
+			if(document.querySelector("input[name=q]").value === ""){
+				alert("Write something in text box")
+				event.preventDefault()
+			}else if(!engine){
+				alert("PICK AN ENGINE")
+			}
 			let actions = {
 				google: "https://www.google.com/search",
 				duckDuckGo: "https://duckduckgo.com/",
 				bing: "https://www.bing.com/search",
 				ask: "https://www.ask.com/web" 
 			};
+			// let engine = document.querySelector("input[name=engine]:checked");
+			let action = actions[engine.value];
+			let inputform = document.getElementById("searchForm");
+			inputform.setAttribute("action", action);
 		};
-		console.log(setSearchEngine)
     window.addEventListener("load", function(){
-
-    });
+		let inputform = document.getElementById("searchForm")
+		inputform.addEventListener("submit", setSearchEngine)
+	});
 	</script>
 </head>
-
 <body>
 
-	<form id="searchForm">
+	<form id="searchForm" action="" name="">
     <!-- TODO: add form elements -->
 		<input type="text" name="q">
 		<input type="radio" name="engine" value="google" id="google">
@@ -34,5 +44,4 @@
 		<label for="ask">Ask </label>
 		<button value="Go!">Submit</button>
 	</form>
-
 </body>
