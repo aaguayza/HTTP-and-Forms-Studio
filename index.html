@@ -4,10 +4,17 @@
 	<meta charset="utf-8">
 	<script>
 		function setSearchEngine(){
-		}
+			selectedEngine = document.querySelector("input[name=engine]:checked").value;
+			let actions = {
+				google: "https://www.google.com/search",
+				duckDuckGo: "https://duckduckgo.com/",
+				bing: "https://www.bing.com/search",
+				ask: "https://www.ask.com/web" 
+			};
+		};
 		console.log(setSearchEngine)
     window.addEventListener("load", function(){
-        // TODO: register the handler
+
     });
 	</script>
 </head>
